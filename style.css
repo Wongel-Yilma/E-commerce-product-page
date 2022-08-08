@@ -1,0 +1,107 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap");
+
+/*
+
+- Very vark blue: hsl(220, 13%, 13%)
+- Dark grayish blue: hsl(219, 9%, 45%)
+- Grayish blue: hsl(220, 14%, 75%)
+- Light grayish blue: hsl(223, 64%, 98%)
+- White: hsl(0, 0%, 100%)
+- Black (with 75% opacity for lightbox background): hsl(0, 0%, 0%)
+////////////////////////////////////////
+Primary colors
+
+- Orange: hsl(26, 100%, 55%)
+- Pale orange: hsl(25, 100%, 94%)
+*/
+:root {
+  --primary-color: hsl(26, 100%, 55%);
+  --primary-color-light: hsl(25, 100%, 94%);
+  --secondary-color-dark: hsl(220, 13%, 13%);
+  --secondary-color: hsl(219, 9%, 45%);
+  --secondary-color-light: hsl(220, 14%, 75%);
+  --gray-color: hsl(223, 64%, 98%);
+  --white-color: hsl(0, 0%, 100%);
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+body {
+  font-size: 1.6rem;
+  font-family: "Outfit";
+  color: var(--secondary-color-dark);
+}
+
+.header {
+  height: 10rem;
+  max-width: 120rem;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--secondary-color-light);
+}
+.nav {
+  margin-left: 3rem;
+}
+.nav__list {
+  display: flex;
+  list-style: none;
+  gap: 3rem;
+}
+
+.nav__link {
+  min-width: 6rem;
+  line-height: 96px;
+  border-bottom: 4px solid transparent;
+  text-decoration: none;
+  display: block;
+  color: var(--secondary-color);
+}
+.nav__link:hover {
+  border-bottom: 4px solid var(--primary-color);
+  color: var(--secondary-color-dark);
+}
+.profile-box {
+  margin-left: auto;
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+}
+.cart {
+  position: relative;
+}
+
+.cart__icon {
+  width: 3rem;
+  height: 3rem;
+  cursor: pointer;
+}
+.cart__icon:hover {
+  fill: var(--secondary-color-dark);
+}
+.cart__num {
+  font-size: 1.2rem;
+  display: block;
+  padding: 0 0.6rem 0;
+  line-height: 2rem;
+  border-radius: 5rem;
+  background-color: var(--primary-color);
+  position: absolute;
+  top: -0.5rem;
+  right: -0.5rem;
+}
+.profile-img-box {
+  width: 10rem;
+}
+.profile-img {
+  width: 5rem;
+  cursor: pointer;
+}
+.profile-img:hover {
+  box-sizing: content-box;
+  border: 4px solid var(--primary-color);
+  border-radius: 10rem;
+  transform: translateX(-4px);
+}
