@@ -23,14 +23,15 @@ const nav = document.querySelector(".nav");
 const headerEl = document.querySelector(".header");
 const mainBtnPrev = document.querySelector(".main-btn--prev");
 const mainBtnNext = document.querySelector(".main-btn--next");
+const btnCart = document.querySelector(".cart--btn");
 
-btnMobileNav.addEventListener("click", function (e) {
-  console.log(e.target);
-
-  headerEl.classList.toggle("nav-open");
+btnCart.addEventListener("click", function () {
+  cartMain.style.display = "block";
 });
 
 let modalPage = 1;
+let mainPage = 1;
+
 // To set the active class on current display
 const setCurrentDisplay = function (imgArr, imgNum) {
   imgArr.forEach((img) => img.classList.remove("img--active"));
@@ -47,6 +48,27 @@ const setMainPreview = function (mainImage, imgNum) {
 };
 
 // Add an event listener to imagesList
+
+// Toggle the mobile navigation sidebar
+btnMobileNav.addEventListener("click", function (e) {
+  headerEl.classList.toggle("nav-open");
+});
+
+// Attach event listener to next button for mobile navigation
+mainBtnNext.addEventListener("click", function (e) {
+  if (mainPage === 4) mainPage = 1;
+  else mainPage += 1;
+  // Display the clicked image on the main Preview
+  setMainPreview(mainImage, mainPage);
+});
+
+// Attach event listener to previous button for mobile navigation
+mainBtnPrev.addEventListener("click", function (e) {
+  if (mainPage === 1) mainPage = 4;
+  else mainPage -= 1;
+  // Display the clicked image on the main Preview
+  setMainPreview(mainImage, mainPage);
+});
 
 imageList.addEventListener("click", function (e) {
   // Get the dataset attribute of the clicked element
