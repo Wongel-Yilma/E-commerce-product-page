@@ -17,6 +17,7 @@ const btnCta = document.querySelector(".btn-cta");
 const cartEl = document.querySelector(".cart__list");
 const cartNum = document.querySelector(".cart__num");
 const quantityContainer = document.querySelector(".product__qty");
+const cartMain = document.querySelector(".cart");
 
 let modalPage = 1;
 // To set the active class on current display
@@ -73,6 +74,7 @@ mainImage.addEventListener("click", function (e) {
 
 // Navigate In the modal Window
 
+// When the thumbnails are clicked
 imageListModal.addEventListener("click", function (e) {
   const imgNum = e.target.dataset.img;
   //
@@ -82,6 +84,7 @@ imageListModal.addEventListener("click", function (e) {
   modalPage = imgNum;
 });
 
+// When Navigation  buttons are clicked
 modal.addEventListener("click", function (e) {
   // Checking if the clicked element is the Next Button
   if (e.target.closest(".btn--next")) {
@@ -109,6 +112,7 @@ modal.addEventListener("click", function (e) {
 // Cart
 
 class CartItem {
+  id = (new Date().getTime() + "").slice(-5);
   constructor(title, unitPrice, qty, image) {
     this.title = title;
     this.unitPrice = unitPrice;
@@ -123,15 +127,18 @@ class App {
   constructor() {
     btnCta.addEventListener("click", this._newCartItem.bind(this));
     quantityContainer.addEventListener("click", this._quantityChangeHandler);
+    cartMain.addEventListener("click", this._cartHandler.bind(this));
   }
   _newCartItem() {
     let cartItem;
+
     const title = titleEl.innerHTML;
     const unitPrice = parseFloat(unitPriceEl.innerHTML.slice(1));
     const qty = qtyEl.innerHTML;
     const image = mainImage.getAttribute("src");
     cartItem = new CartItem(title, unitPrice, qty, image);
     this.#cart.push(cartItem);
+    console.log(cartItem);
     this._renderCartItem();
     this._updateCartNumber();
   }
@@ -148,7 +155,7 @@ class App {
   }
   _generateMarkup(cartItem) {
     return `
-    <div class="cart__item">
+    <div class="cart__item" data-id="${cartItem.id}">
      <div class="cart__item--header">
        <div class="cart__item--img-box">
          <img
@@ -187,6 +194,21 @@ class App {
     if (e.target.closest(".btn").classList.contains("btn--increase")) {
       qtyEl.innerHTML = `${+qtyEl.innerHTML + 1}`;
     }
+  }
+  _cartHandler(e) {
+    e.preventDefault();
+    if (e.target.closest(".cart__item--delete")) {
+      const id = e.target.closest(".cart__item").dataset.id;
+      const index = this.#cart.findIndex((cartItem) => cartItem.id === id);
+      this.#cart.splice(index, 1);
+      this._renderCartItem();
+      this._updateCartNumber();
+      if (this.#cart.length === 0) this._renderMessage();
+    }
+  }
+  _renderMessage() {
+    const markup = ` <div class="cart__msg">Your cart is empty</div>`;
+    cartEl.insertAdjacentHTML("afterbegin", markup);
   }
 }
 const app = new App();
