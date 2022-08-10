@@ -143,10 +143,11 @@ body {
   cursor: pointer;
 }
 .product__img--item:hover {
-  opacity: 0.8;
+  opacity: 0.7;
 }
 .product__img--item--active {
-  opacity: 0.6;
+  opacity: 0.3;
+  outline: 3px solid var(--primary-color);
 }
 
 /*Product Description*/
@@ -375,10 +376,11 @@ body {
   cursor: pointer;
 }
 .modal__img--item:hover {
-  opacity: 0.8;
+  opacity: 0.7;
 }
 .modal__img--item--active {
-  opacity: 0.6;
+  opacity: 0.4;
+  outline: 3px solid var(--primary-color);
 }
 
 .hidden {
