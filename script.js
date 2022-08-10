@@ -10,6 +10,10 @@ const btnClose = document.querySelector(".btn-close");
 const btnNext = document.querySelector(".btn--next");
 const btnPrev = document.querySelector(".btn--prev");
 const modal = document.querySelector(".modal");
+const unitPrice = document.querySelector(".price--new");
+const title = document.querySelector(".product__title");
+const qty = document.querySelector(".quantity");
+const btnCta = document.querySelector(".btn-cta");
 
 let modalPage = 1;
 // To set the active class on current display
@@ -94,3 +98,53 @@ modal.addEventListener("click", function (e) {
   }
   setCurrentDisplay(smallImagesModal, modalPage);
 });
+
+////////////////////////////////////////////
+////////////////////////////////////////////
+// Cart
+
+class Cart {
+  constructor(title, unitPrice, qty, img) {
+    this.title = title;
+    this.unitPrice = unitPrice;
+    this.qty = qty;
+    this.img = img;
+  }
+}
+
+class App {
+  #cart = [];
+  constructor() {}
+  _newCartItem() {
+    const title = title.value;
+  }
+  _renderCartItem(cartItem) {}
+  _generateMarkup() {
+    return `
+    <div class="cart__item">
+     <div class="cart__item--header">
+       <div class="cart__item--img-box">
+         <img
+           class="cart__item--img"
+           src="images/image-product-1-thumbnail.jpg"
+           alt="cart image 1"
+         />
+       </div>
+       <div class="cart__item--description">
+         <p class="cart__item--title">Fall Limited Edition Sneakers</p>
+         <div class="cart__item--pricing">
+           <p class="cart__item--unit-price">${cart.unitPrice}}</p>
+           <span>x</span>
+           <span class="cart__item-num">3</span>
+           <p class="cart__item--total-price">$375.00</p>
+         </div>
+       </div>
+       <div class="cart__item--delete">
+         <img src="images/icon-delete.svg" alt="Delete icon" />
+       </div>
+     </div>
+     <button class="cart__cta-btn">Checkout</button>
+   </div>;`;
+  }
+}
+const app = new App();
