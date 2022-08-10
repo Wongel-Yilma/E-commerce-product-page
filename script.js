@@ -10,11 +10,13 @@ const btnClose = document.querySelector(".btn-close");
 const btnNext = document.querySelector(".btn--next");
 const btnPrev = document.querySelector(".btn--prev");
 const modal = document.querySelector(".modal");
-const unitPrice = document.querySelector(".price--new");
-const title = document.querySelector(".product__title");
-const qty = document.querySelector(".quantity");
+const unitPriceEl = document.querySelector(".price--new");
+const titleEl = document.querySelector(".product__title");
+const qtyEl = document.querySelector(".quantity");
 const btnCta = document.querySelector(".btn-cta");
+const cartEl = document.querySelector(".cart__list");
 
+console.log(titleEl.innerHTML);
 let modalPage = 1;
 // To set the active class on current display
 const setCurrentDisplay = function (imgArr, imgNum) {
@@ -83,6 +85,7 @@ modal.addEventListener("click", function (e) {
   // Checking if the clicked element is the Next Button
   if (e.target.closest(".btn--next")) {
     modalPage = Number(modalPage);
+    //Check of the page number does not go beyond 4 and below 1
     if (modalPage === 4) modalPage = 1;
     else modalPage += 1;
     // Display the clicked image on the main Preview
@@ -91,6 +94,7 @@ modal.addEventListener("click", function (e) {
   // Checking if the clicked element is the prev button
   if (e.target.closest(".btn--prev")) {
     modalPage = Number(modalPage);
+    //Check of the page number does not go beyond 4 and below 1
     if (modalPage === 1) modalPage = 4;
     else modalPage -= 1;
     // Display the clicked image on the main Preview
@@ -103,40 +107,60 @@ modal.addEventListener("click", function (e) {
 ////////////////////////////////////////////
 // Cart
 
-class Cart {
-  constructor(title, unitPrice, qty, img) {
+class CartItem {
+  constructor(title, unitPrice, qty, image) {
     this.title = title;
     this.unitPrice = unitPrice;
     this.qty = qty;
-    this.img = img;
+    this.image = image;
+    this.totalPrice = Number(unitPrice) * Number(qty);
   }
 }
 
 class App {
   #cart = [];
-  constructor() {}
-  _newCartItem() {
-    const title = title.value;
+  constructor() {
+    btnCta.addEventListener("click", this._newCartItem.bind(this));
   }
-  _renderCartItem(cartItem) {}
-  _generateMarkup() {
+  _newCartItem() {
+    let cartItem;
+    const title = titleEl.innerHTML;
+    const unitPrice = parseFloat(unitPriceEl.innerHTML.slice(1));
+    const qty = qtyEl.innerHTML;
+    const image = mainImage.getAttribute("src");
+    cartItem = new CartItem(title, unitPrice, qty, image);
+    console.log(cartItem);
+    console.log(this.#cart);
+    this.#cart.push(cartItem);
+    console.log(this.#cart);
+    this._renderCartItem();
+  }
+  _renderCartItem() {
+    cartEl.innerHTML = "";
+
+    this.#cart.forEach((cartItem) => {
+      const markup = this._generateMarkup(cartItem);
+      cartEl.insertAdjacentHTML("afterbegin", markup);
+    });
+  }
+  _generateMarkup(cartItem) {
     return `
     <div class="cart__item">
      <div class="cart__item--header">
        <div class="cart__item--img-box">
          <img
            class="cart__item--img"
-           src="images/image-product-1-thumbnail.jpg"
+           src="${cartItem.image}"
            alt="cart image 1"
          />
        </div>
        <div class="cart__item--description">
          <p class="cart__item--title">Fall Limited Edition Sneakers</p>
          <div class="cart__item--pricing">
-           <p class="cart__item--unit-price">${cart.unitPrice}}</p>
+           <p class="cart__item--unit-price">$${cartItem.unitPrice}</p>
            <span>x</span>
-           <span class="cart__item-num">3</span>
-           <p class="cart__item--total-price">$375.00</p>
+           <span class="cart__item-num">${cartItem.qty}</span>
+           <p class="cart__item--total-price">${cartItem.totalPrice}</p>
          </div>
        </div>
        <div class="cart__item--delete">
@@ -144,7 +168,7 @@ class App {
        </div>
      </div>
      <button class="cart__cta-btn">Checkout</button>
-   </div>;`;
+   </div>`;
   }
 }
 const app = new App();

@@ -281,6 +281,11 @@ body {
   transform: translate(-50%, -50%);
 }
 
+.cart__list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
 .cart__item {
   display: flex;
   flex-direction: column;
