@@ -145,7 +145,7 @@ body {
 .product__img--item:hover {
   opacity: 0.7;
 }
-.product__img--item--active {
+.img--active {
   opacity: 0.3;
   outline: 3px solid var(--primary-color);
 }
@@ -381,7 +381,7 @@ body {
 .modal__img--item:hover {
   opacity: 0.7;
 }
-.modal__img--item--active {
+.img--active {
   opacity: 0.4;
   outline: 3px solid var(--primary-color);
 }
