@@ -266,6 +266,7 @@ body {
   border-radius: 1rem;
   color: var(--secondary-color);
   min-height: 15rem;
+  font-size: 1.2rem;
   display: none;
 }
 .cart .heading-3 {
@@ -334,7 +335,7 @@ body {
   cursor: pointer;
 }
 .cart__item--img-box {
-  width: 20%;
+  width: 18%;
 }
 .cart__item--img {
   width: 100%;
