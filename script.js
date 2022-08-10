@@ -21,6 +21,8 @@ const cartMain = document.querySelector(".cart");
 const btnMobileNav = document.querySelector(".btn-mobile-nav");
 const nav = document.querySelector(".nav");
 const headerEl = document.querySelector(".header");
+const mainBtnPrev = document.querySelector(".main-btn--prev");
+const mainBtnNext = document.querySelector(".main-btn--next");
 
 btnMobileNav.addEventListener("click", function (e) {
   console.log(e.target);

@@ -96,7 +96,7 @@
     </header>
 
     <main class="container">
-      <div class="product__gallery">
+      <gallery class="product__gallery">
         <div class="product__img--main">
           <img
             class="product__img"
@@ -104,6 +104,12 @@
             alt="product image"
             data-display="1"
           />
+          <button class="btn main-btn--prev">
+            <svg class="icon-prev" xmlns="http://www.w3.org/2000/svg" width="12" height="18"><path d="M11 1 3 9l8 8" stroke="#1D2026" stroke-width="3" fill="none" fill-rule="evenodd"/></svg>
+          </button>
+          <button class="btn main-btn--next">
+            <svg class="icon-next" xmlns="http://www.w3.org/2000/svg" width="13" height="18"><path d="m2 1 8 8-8 8" stroke="#1D2026" stroke-width="3" fill="none" fill-rule="evenodd"/></svg>
+          </button>
         </div>
         <div class="product__img--list">
           <img
@@ -131,7 +137,7 @@
             data-img ="4"
           />
         </div>
-      </div>
+      </gallery>
       <div class="product__description">
         <div class="sub-heading">Sneaker Company</div>
         <h1 class="heading-1 product__title">Fall Limited Edition Sneakers</h1>
@@ -140,11 +146,14 @@
           Featuring a durable rubber outer sole, they’ll withstand everything
           the weather can offer.
         </p>
-        <p class="price">
-          <span class="price--new">$125.00</span>
-          <span class="price--discount">50%</span>
-        </p>
-        <p class="price--old">$250.00</p>
+        <div class="pricing">
+
+          <p class="price">
+            <span class="price--new">$125.00</span>
+            <span class="price--discount">50%</span>
+          </p>
+          <p class="price--old">$250.00</p>
+        </div>
         <div class="cta">
           <div class="product__qty">
             <button class="btn btn--decrease">

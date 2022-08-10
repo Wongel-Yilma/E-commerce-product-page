@@ -125,6 +125,9 @@ body {
   column-gap: 6rem;
   align-items: center;
 }
+.product__img--main {
+  position: relative;
+}
 .product__gallery {
   display: grid;
   gap: 2rem;
@@ -220,7 +223,8 @@ body {
   cursor: pointer;
 }
 .cta {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto auto;
   align-items: center;
   gap: 2rem;
 }
@@ -451,4 +455,27 @@ body {
 }
 .btn--next:hover .icon-next path {
   stroke: var(--primary-color);
+}
+
+/* Mobile navigation buttons */
+.main-btn--prev,
+.main-btn--next {
+  padding-top: 0.4rem;
+  height: 3.6rem;
+  width: 3.6rem;
+  border-radius: 5rem;
+  background-color: var(--white-color);
+  position: absolute;
+  /* display: none; */
+}
+
+.main-btn--prev {
+  left: 10%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.main-btn--next {
+  left: 90%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
