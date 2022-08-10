@@ -15,6 +15,7 @@ const titleEl = document.querySelector(".product__title");
 const qtyEl = document.querySelector(".quantity");
 const btnCta = document.querySelector(".btn-cta");
 const cartEl = document.querySelector(".cart__list");
+const cartNum = document.querySelector(".cart__num");
 
 console.log(titleEl.innerHTML);
 let modalPage = 1;
@@ -134,6 +135,7 @@ class App {
     this.#cart.push(cartItem);
     console.log(this.#cart);
     this._renderCartItem();
+    this._updateCartNumber();
   }
   _renderCartItem() {
     cartEl.innerHTML = "";
@@ -142,6 +144,9 @@ class App {
       const markup = this._generateMarkup(cartItem);
       cartEl.insertAdjacentHTML("afterbegin", markup);
     });
+  }
+  _updateCartNumber() {
+    cartNum.innerHTML = `${this.#cart.length}`;
   }
   _generateMarkup(cartItem) {
     return `
