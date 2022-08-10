@@ -16,8 +16,8 @@ const qtyEl = document.querySelector(".quantity");
 const btnCta = document.querySelector(".btn-cta");
 const cartEl = document.querySelector(".cart__list");
 const cartNum = document.querySelector(".cart__num");
+const quantityContainer = document.querySelector(".product__qty");
 
-console.log(titleEl.innerHTML);
 let modalPage = 1;
 // To set the active class on current display
 const setCurrentDisplay = function (imgArr, imgNum) {
@@ -122,6 +122,7 @@ class App {
   #cart = [];
   constructor() {
     btnCta.addEventListener("click", this._newCartItem.bind(this));
+    quantityContainer.addEventListener("click", this._quantityChangeHandler);
   }
   _newCartItem() {
     let cartItem;
@@ -130,10 +131,7 @@ class App {
     const qty = qtyEl.innerHTML;
     const image = mainImage.getAttribute("src");
     cartItem = new CartItem(title, unitPrice, qty, image);
-    console.log(cartItem);
-    console.log(this.#cart);
     this.#cart.push(cartItem);
-    console.log(this.#cart);
     this._renderCartItem();
     this._updateCartNumber();
   }
@@ -165,7 +163,7 @@ class App {
            <p class="cart__item--unit-price">$${cartItem.unitPrice}</p>
            <span>x</span>
            <span class="cart__item-num">${cartItem.qty}</span>
-           <p class="cart__item--total-price">${cartItem.totalPrice}</p>
+           <p class="cart__item--total-price">$${cartItem.totalPrice}</p>
          </div>
        </div>
        <div class="cart__item--delete">
@@ -174,6 +172,21 @@ class App {
      </div>
      <button class="cart__cta-btn">Checkout</button>
    </div>`;
+  }
+  _quantityChangeHandler(e) {
+    // Setting up the guard clause
+    if (!e.target.closest(".btn")) return;
+    // If the Minus button is clicked
+    if (e.target.closest(".btn").classList.contains("btn--decrease")) {
+      const qtyNum = +qtyEl.innerHTML;
+      // Avoiding Negative numbers
+      if (qtyNum === 0) return;
+      qtyEl.innerHTML = `${+qtyEl.innerHTML - 1}`;
+    }
+    // If the plus Button is clicked
+    if (e.target.closest(".btn").classList.contains("btn--increase")) {
+      qtyEl.innerHTML = `${+qtyEl.innerHTML + 1}`;
+    }
   }
 }
 const app = new App();
