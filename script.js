@@ -18,6 +18,15 @@ const cartEl = document.querySelector(".cart__list");
 const cartNum = document.querySelector(".cart__num");
 const quantityContainer = document.querySelector(".product__qty");
 const cartMain = document.querySelector(".cart");
+const btnMobileNav = document.querySelector(".btn-mobile-nav");
+const nav = document.querySelector(".nav");
+const headerEl = document.querySelector(".header");
+
+btnMobileNav.addEventListener("click", function (e) {
+  console.log(e.target);
+
+  headerEl.classList.toggle("nav-open");
+});
 
 let modalPage = 1;
 // To set the active class on current display
