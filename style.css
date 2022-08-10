@@ -389,6 +389,7 @@ body {
 .modal__img--item {
   border-radius: 10%;
   width: 100%;
+  height: 100%;
   cursor: pointer;
 }
 .modal__img--item:hover {
@@ -397,6 +398,12 @@ body {
 .img--active {
   opacity: 0.4;
   outline: 3px solid var(--primary-color);
+}
+.modal__img--list-back {
+  border-radius: 10%;
+  width: 100%;
+  z-index: 2;
+  background-color: var(--white-color);
 }
 
 .hidden {
