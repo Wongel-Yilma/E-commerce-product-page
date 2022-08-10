@@ -151,6 +151,9 @@ body {
 }
 
 /*Product Description*/
+.product__description {
+  padding: 1rem;
+}
 
 .sub-heading {
   color: var(--primary-color);
