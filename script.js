@@ -24,10 +24,7 @@ const headerEl = document.querySelector(".header");
 const mainBtnPrev = document.querySelector(".main-btn--prev");
 const mainBtnNext = document.querySelector(".main-btn--next");
 const btnCart = document.querySelector(".cart--btn");
-
-btnCart.addEventListener("click", function () {
-  cartMain.style.display = "block";
-});
+const container = document.querySelector(".container");
 
 let modalPage = 1;
 let mainPage = 1;
@@ -47,7 +44,22 @@ const setMainPreview = function (mainImage, imgNum) {
   mainImage.dataset.display = imgNum;
 };
 
-// Add an event listener to imagesList
+// Event listeners
+// Add an event listener to the body and button to view cart
+btnCart.addEventListener("click", function () {
+  cartMain.style.display = "block";
+});
+document.body.addEventListener("click", function (e) {
+  // console.log(e.target);
+  if ((e.target === cartMain) & (e.target === btnCart)) {
+    e.stopPropagation();
+    return;
+  }
+  if (e.target.closest(".container")) {
+    console.log("container clicked");
+    cartMain.style.display = "none";
+  }
+});
 
 // Toggle the mobile navigation sidebar
 btnMobileNav.addEventListener("click", function (e) {

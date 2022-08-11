@@ -6,7 +6,7 @@
 
 @media (max-width: 44em) {
   .logo-box {
-    margin-left: 12rem;
+    margin-left: 10rem;
   }
   .btn-mobile-nav {
     border: none;
@@ -61,6 +61,17 @@
 
 /* Mobile View */
 @media (max-width: 35em) {
+  .logo {
+    width: 15rem;
+    height: auto;
+  }
+  .profile-box {
+    gap: 1.2rem;
+  }
+  .main-btn--prev,
+  .main-btn--next {
+    display: block;
+  }
   .container {
     grid-template-columns: 1fr;
     padding: 0;
@@ -77,6 +88,7 @@
     grid-template-columns: 1fr;
     justify-content: center;
     width: 90%;
+    margin-bottom: 2rem;
   }
   .btn-cta {
     height: 6rem;
@@ -95,6 +107,7 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 1.5rem;
+    align-items: center;
   }
   .heading-1 {
     margin-bottom: 2rem;
@@ -109,6 +122,5 @@
     width: 90vw;
     top: 230%;
     left: -270%;
-    /* transform: translate(-73%, 30%); */
   }
 }

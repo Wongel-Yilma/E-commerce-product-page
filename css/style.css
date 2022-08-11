@@ -63,7 +63,7 @@ body {
 
 .nav__link {
   min-width: 6rem;
-  line-height: 96px;
+  line-height: 9.6rem;
   border-bottom: 4px solid transparent;
   text-decoration: none;
   display: block;
@@ -473,9 +473,11 @@ body {
   left: 10%;
   top: 50%;
   transform: translate(-50%, -50%);
+  display: none;
 }
 .main-btn--next {
   left: 90%;
   top: 50%;
   transform: translate(-50%, -50%);
+  display: none;
 }
