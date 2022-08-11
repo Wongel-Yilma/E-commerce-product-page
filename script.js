@@ -49,6 +49,12 @@ const setMainPreview = function (mainImage, imgNum) {
 btnCart.addEventListener("click", function () {
   cartMain.style.display = "block";
 });
+btnCart.addEventListener("mouseover", function () {
+  cartMain.style.display = "block";
+  btnCart.addEventListener("mouseout", function () {
+    cartMain.style.display = "none";
+  });
+});
 document.body.addEventListener("click", function (e) {
   // console.log(e.target);
   if ((e.target === cartMain) & (e.target === btnCart)) {
@@ -56,7 +62,6 @@ document.body.addEventListener("click", function (e) {
     return;
   }
   if (e.target.closest(".container")) {
-    console.log("container clicked");
     cartMain.style.display = "none";
   }
 });
