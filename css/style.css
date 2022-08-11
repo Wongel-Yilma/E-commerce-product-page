@@ -206,8 +206,9 @@ body {
   margin-bottom: 2.5rem;
 }
 .product__qty {
-  min-width: 15rem;
+  width: 15rem;
   display: flex;
+  flex-shrink: 1;
   align-items: center;
   border-radius: 1rem;
   background-color: var(--gray-color);
@@ -224,7 +225,7 @@ body {
 }
 .cta {
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: 1fr 2fr;
   align-items: center;
   gap: 2rem;
 }
